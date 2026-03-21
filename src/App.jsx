@@ -1,34 +1,60 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import {Header} from './Header'
+import {LoginPage} from './LoginPage'
+import {SignUpPage} from './SignUpPage'
+
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [showLoginPage, setShowLoginPage] = useState(false)
+  const [loginHeaderText, setLoginHeaderText] = useState('Login')
+  const [showSignUpPage, setShowSignUpPage] = useState(false)
+  const [signUpHeaderText, setSignUpHeaderText] = useState('Sign Up')
+
+  const handleLoginClick = () => {
+    setLoginHeaderText('Welcome Back!')
+    setShowLoginPage(true)
+  }
+
+  const handleLoginSubmit = ({ username, password }) => {
+    alert(`Logged in as ${username}`)
+    console.log('Login form data:', { username, password })
+    setShowLoginPage(false)
+  }
+
+  if (showLoginPage) {
+    return <LoginPage headerText={loginHeaderText} onSubmit={handleLoginSubmit} />
+  }
+
+  const handleSignUpClick = () => {
+    setSignUpHeaderText('Thanks for your interest in "Letters to Her"!')
+    setShowSignUpPage(true)
+  }
+
+  const handleSignUpSubmit = ({ username, name, password }) => {
+    alert(`Account created for ${name}`)
+    console.log('Sign up form data:', { username, name, password })
+    setShowSignUpPage(false)
+  }
+
+  if (showSignUpPage) {
+    return <SignUpPage headerText={signUpHeaderText} onSubmit={handleSignUpSubmit} />
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Letters to Women</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <button
+        style = {{position: 'relative', top: '-240px', left: '510px'}}
+        onClick={handleLoginClick}
+      >
+        Log In
+      </button>
+      <button 
+        style = {{position: 'relative', top: '-240px', left: '530px'}} 
+        onClick={handleSignUpClick}>Sign Up</button>
+      <Header />
+    </div>
   )
 }
 
