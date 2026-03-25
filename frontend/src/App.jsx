@@ -1,9 +1,9 @@
 import React from 'react'
 import { useState } from 'react'
 import './App.css'
-import {Header} from './Header'
-import {LoginPage} from './LoginPage'
-import {SignUpPage} from './SignUpPage'
+import {Header} from './components/Header'
+import {LoginPage} from './pages/LoginPage'
+import {SignUpPage} from './pages/SignUpPage'
 
 
 
