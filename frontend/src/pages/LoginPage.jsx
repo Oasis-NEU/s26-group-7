@@ -9,6 +9,13 @@ export function LoginPage({ headerText, onSubmit }) {
         onSubmit({username, password})
     }
     return (
+        <div
+        style = {{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+        }}>
         <div>
             <h1>{headerText}</h1>
             <form onSubmit={handleSubmit}>
@@ -22,6 +29,7 @@ export function LoginPage({ headerText, onSubmit }) {
                 <br />
                 <button type="submit">Log In</button>
             </form>
+        </div>
         </div>
     )
 }

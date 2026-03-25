@@ -1,9 +1,9 @@
 import React from 'react'
 import { useState } from 'react'
 import './App.css'
-import {Header} from './Header'
-import {LoginPage} from './LoginPage'
-import {SignUpPage} from './SignUpPage'
+import {Header} from './components/Header'
+import {LoginPage} from './pages/LoginPage'
+import {SignUpPage} from './pages/SignUpPage'
 
 
 
@@ -29,7 +29,7 @@ function App() {
   }
 
   const handleSignUpClick = () => {
-    setSignUpHeaderText('Thanks for your interest in "Letters to Her"!')
+    setSignUpHeaderText('Thanks for your interest in Unwritten!')
     setShowSignUpPage(true)
   }
 
