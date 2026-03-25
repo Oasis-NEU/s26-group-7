@@ -29,7 +29,7 @@ function App() {
   }
 
   const handleSignUpClick = () => {
-    setSignUpHeaderText('Thanks for your interest in "Letters to Her"!')
+    setSignUpHeaderText('Thanks for your interest in Unwritten!')
     setShowSignUpPage(true)
   }
 

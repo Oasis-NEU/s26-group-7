@@ -10,6 +10,13 @@ export function SignUpPage({headerText, onSubmit}) {
         onSubmit({username, name, password})
     }
     return (
+        <div
+        style = {{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+        }}>
         <div>
             <h1>{headerText}</h1>
             <form onSubmit={handleSubmit}>
@@ -27,6 +34,7 @@ export function SignUpPage({headerText, onSubmit}) {
                 <br />
                 <button type="submit">Sign Up</button>
             </form>
+        </div>
         </div>
     )
 }
