@@ -4,7 +4,7 @@ import './App.css'
 import {Header} from './Header'
 import {LoginPage} from './LoginPage'
 import {SignUpPage} from './SignUpPage'
-
+import {Home} from './pages/Home'
 
 
 function App() {
@@ -12,6 +12,8 @@ function App() {
   const [loginHeaderText, setLoginHeaderText] = useState('Login')
   const [showSignUpPage, setShowSignUpPage] = useState(false)
   const [signUpHeaderText, setSignUpHeaderText] = useState('Sign Up')
+  const [page, setPage] = useState('home')
+ 
 
   const handleLoginClick = () => {
     setLoginHeaderText('Welcome Back!')
