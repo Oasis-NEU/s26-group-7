@@ -12,7 +12,7 @@ function App() {
   const [loginHeaderText, setLoginHeaderText] = useState('Login')
   const [showSignUpPage, setShowSignUpPage] = useState(false)
   const [signUpHeaderText, setSignUpHeaderText] = useState('Sign Up')
-  const [page, setPage] = useState('home')
+  const [page, setPage] = useState(null)
  
 
   const handleLoginClick = () => {
@@ -24,6 +24,7 @@ function App() {
     alert(`Logged in as ${username}`)
     console.log('Login form data:', { username, password })
     setShowLoginPage(false)
+    setPage('home')
   }
 
   if (showLoginPage) {
@@ -39,10 +40,15 @@ function App() {
     alert(`Account created for ${name}`)
     console.log('Sign up form data:', { username, name, password })
     setShowSignUpPage(false)
+    setPage('home')
   }
 
   if (showSignUpPage) {
     return <SignUpPage headerText={signUpHeaderText} onSubmit={handleSignUpSubmit} />
+  }
+
+  if (page === 'home') {
+    return <Home setPage={setPage} />
   }
 
   return (
@@ -52,6 +58,7 @@ function App() {
         <button onClick={handleSignUpClick}>Sign Up</button>
       </div>
       <Header />
+      {page === 'home' && <Home setPage={setPage} />}
     </div>
   )
 }
