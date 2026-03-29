@@ -1,10 +1,10 @@
-import React from 'react'
+
 import { useState } from 'react'
 import './App.css'
-import {Header} from './components/Header'
-import {LoginPage} from './pages/LoginPage'
-import {SignUpPage} from './pages/SignUpPage'
-
+import { Header } from './components/Header'
+import { LoginPage } from './pages/LoginPage'
+import { SignUpPage } from './pages/SignUpPage'
+import Home from './Home'
 
 
 function App() {
@@ -12,6 +12,8 @@ function App() {
   const [loginHeaderText, setLoginHeaderText] = useState('Login')
   const [showSignUpPage, setShowSignUpPage] = useState(false)
   const [signUpHeaderText, setSignUpHeaderText] = useState('Sign Up')
+  const [page, setPage] = useState(null)
+ 
 
   const handleLoginClick = () => {
     setLoginHeaderText('Welcome Back!')
@@ -22,10 +24,7 @@ function App() {
     alert(`Logged in as ${username}`)
     console.log('Login form data:', { username, password })
     setShowLoginPage(false)
-  }
-
-  if (showLoginPage) {
-    return <LoginPage headerText={loginHeaderText} onSubmit={handleLoginSubmit} />
+    setPage('home')
   }
 
   const handleSignUpClick = () => {
@@ -37,10 +36,19 @@ function App() {
     alert(`Account created for ${name}`)
     console.log('Sign up form data:', { username, name, password })
     setShowSignUpPage(false)
+    setPage('home')
+  }
+
+  if (showLoginPage) {
+    return <LoginPage headerText={loginHeaderText} onSubmit={handleLoginSubmit} />
   }
 
   if (showSignUpPage) {
     return <SignUpPage headerText={signUpHeaderText} onSubmit={handleSignUpSubmit} />
+  }
+
+  if (page === 'home') {
+    return <Home setPage={setPage} />
   }
 
   return (
