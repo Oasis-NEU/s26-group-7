@@ -1,8 +1,9 @@
-export default function Home() {
+export default function Home({ setPage }) {
   return (
-    <div className="page">
-      <h1 className="page-title">Home</h1>
-      <p className="page-sub">Welcome!</p>
+    <div>
+      <h1>Welcome to Letters to Women</h1>
+      <button onClick={() => setPage('write')}>Create a Letter</button>
+      <button onClick={() => setPage('profile')}>My Letters</button>
     </div>
   )
 }

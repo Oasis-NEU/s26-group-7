@@ -4,7 +4,7 @@ import './App.css'
 import {Header} from './Header'
 import {LoginPage} from './LoginPage'
 import {SignUpPage} from './SignUpPage'
-import {Home} from './pages/Home'
+import Home from './Home'
 
 
 function App() {
