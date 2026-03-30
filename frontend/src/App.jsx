@@ -5,7 +5,7 @@ import {Header} from './Header'
 import {LoginPage} from './LoginPage'
 import {SignUpPage} from './SignUpPage'
 import Home from './Home'
-
+import { CreateLetterPage } from './pages/CreateLetterPage'
 
 function App() {
   const [showLoginPage, setShowLoginPage] = useState(false)
@@ -27,10 +27,6 @@ function App() {
     setPage('home')
   }
 
-  if (showLoginPage) {
-    return <LoginPage headerText={loginHeaderText} onSubmit={handleLoginSubmit} />
-  }
-
   const handleSignUpClick = () => {
     setSignUpHeaderText('Thanks for your interest in "Letters to Her"!')
     setShowSignUpPage(true)
@@ -43,12 +39,20 @@ function App() {
     setPage('home')
   }
 
+  if (showLoginPage) {
+    return <LoginPage headerText={loginHeaderText} onSubmit={handleLoginSubmit} />
+  }
+
   if (showSignUpPage) {
     return <SignUpPage headerText={signUpHeaderText} onSubmit={handleSignUpSubmit} />
   }
 
   if (page === 'home') {
     return <Home setPage={setPage} />
+  }
+
+  if (page === 'write') {
+    return <CreateLetterPage setPage={setPage} />
   }
 
   return (
@@ -58,7 +62,6 @@ function App() {
         <button onClick={handleSignUpClick}>Sign Up</button>
       </div>
       <Header />
-      {page === 'home' && <Home setPage={setPage} />}
     </div>
   )
 }
