@@ -40,6 +40,10 @@ function App() {
     setPage('home')
   }
 
+  const addLetter = (letterContent) => {
+    setLetters(prev => [...prev, letterContent])
+  }
+
   if (showLoginPage) {
     return <LoginPage headerText={loginHeaderText} onSubmit={handleLoginSubmit} />
   }
@@ -53,7 +57,7 @@ function App() {
   }
 
   if (page === 'write') {
-    return <CreateLetterPage setPage={setPage} />
+    return <CreateLetterPage setPage={setPage} onSubmit={addLetter} />
   }
 
   if (page === 'myletters') {
