@@ -6,6 +6,7 @@ import {LoginPage} from './LoginPage'
 import {SignUpPage} from './SignUpPage'
 import Home from './Home'
 import { CreateLetterPage } from './pages/CreateLetterPage'
+import { MyLetters } from './pages/MyLetters'
 
 function App() {
   const [showLoginPage, setShowLoginPage] = useState(false)
@@ -13,7 +14,7 @@ function App() {
   const [showSignUpPage, setShowSignUpPage] = useState(false)
   const [signUpHeaderText, setSignUpHeaderText] = useState('Sign Up')
   const [page, setPage] = useState(null)
- 
+  const [letters, setLetters] = useState([])
 
   const handleLoginClick = () => {
     setLoginHeaderText('Welcome Back!')
@@ -53,6 +54,10 @@ function App() {
 
   if (page === 'write') {
     return <CreateLetterPage setPage={setPage} />
+  }
+
+  if (page === 'myletters') {
+    return <MyLetters letters={letters} setPage={setPage} />
   }
 
   return (

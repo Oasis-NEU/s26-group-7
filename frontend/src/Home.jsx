@@ -10,7 +10,7 @@ export default function Home({ setPage }) {
       <h1>Welcome to Letters to Women</h1>
 
       <button onClick={() => setPage('write')}>Create a Letter</button>
-      <button onClick={() => setPage('profile')} style={{ marginLeft: '1rem' }}>My Letters</button>
+      <button onClick={() => setPage('myletters')} style={{ marginLeft: '1rem' }}>My Letters</button>
     </div>
   )
 }
