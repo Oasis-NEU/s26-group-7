@@ -20,7 +20,7 @@ export default function Home({ setPage }) {
         <button onClick={() => setPage('write')}>Create a Letter</button>
         <button onClick={() => setPage('myletters')}>My Letters</button>
       </div>
-      <h1>Welcome to Letters to Women!</h1>
+      <h1>Welcome to Unwritten!</h1>
 
       <h2 style={{ fontSize: '1.1rem', color: '#888', marginBottom: '1.5rem' }}>Letters from our community</h2>
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1.5rem', maxWidth: '1100px', margin: '0 auto' }}>
