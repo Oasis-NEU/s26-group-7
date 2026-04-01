@@ -2,29 +2,56 @@
 export function MyLetters({ letters, setPage }) {
   return (
     <div style={{
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)',
-      textAlign: 'center',
-      width: '500px'
+      minHeight: '100vh',
+      background: 'linear-gradient(135deg, #f9e4f0, #ede4f9)',
+      fontFamily: 'serif',
+      padding: '3rem 2rem'
     }}>
-      <h1>My Letters</h1>
-      {letters.length === 0 ? (
-        <p>You haven't written any letters yet.</p>
-      ) : (
-        letters.map((letter, index) => (
-          <div key={index} style={{
-            border: '1px solid #ccc', borderRadius: '8px',
-            padding: '1rem', marginBottom: '1rem', textAlign: 'left'
+      <div style={{ maxWidth: '700px', margin: '0 auto' }}>
+        <h1 style={{ color: '#3d1f35', marginBottom: '0.3rem', fontSize: '2rem' }}>My Letters</h1>
+        <p style={{ color: '#a06080', marginBottom: '2rem', fontSize: '0.95rem' }}>Letters you've written and shared.</p>
+
+        {letters.length === 0 ? (
+          <div style={{
+            background: 'white', borderRadius: '16px', padding: '3rem',
+            textAlign: 'center', border: '1px solid #f0dde8'
           }}>
-            <p><strong>Dear Reader,</strong></p>
-            <p>{letter}</p>
-            <p style={{ color: '#888', fontSize: '0.85rem' }}>— Anonymous</p>
+            <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>💌</div>
+            <p style={{ color: '#a06080' }}>You haven't written any letters yet.</p>
+            <button onClick={() => setPage('write')} style={{
+              marginTop: '1.5rem', padding: '0.75rem 2rem',
+              borderRadius: '10px', border: 'none', background: '#7c3f6e',
+              color: 'white', cursor: 'pointer', fontSize: '1rem', fontFamily: 'serif'
+            }}>Write Your First Letter</button>
           </div>
-        ))
-      )}
-      <button onClick={() => setPage('home')}>Back to Home</button>
+        ) : (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+            {letters.map((letter, i) => (
+              <div key={i} style={{
+                background: 'white', borderRadius: '16px', padding: '2rem',
+                border: '1px solid #f0dde8',
+                boxShadow: '0 4px 20px rgba(180,100,140,0.08)'
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1rem' }}>
+                  <span style={{ fontSize: '1.8rem' }}>{letter.emoji || '💌'}</span>
+                  <h3 style={{ color: '#3d1f35', fontSize: '1.1rem' }}>{letter.subject || 'Untitled'}</h3>
+                </div>
+                <p style={{ color: '#7c5070', lineHeight: '1.75', fontSize: '0.95rem' }}>
+                  <strong>Dear Reader,</strong><br />{letter.content}
+                </p>
+                <div style={{ marginTop: '1rem', fontSize: '0.8rem', color: '#c084a0' }}>— Anonymous</div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        <button onClick={() => setPage('home')} style={{
+          marginTop: '2rem', padding: '0.7rem 1.5rem',
+          borderRadius: '10px', border: '1.5px solid #c084a0',
+          background: 'white', color: '#7c3f6e',
+          cursor: 'pointer', fontSize: '0.95rem', fontFamily: 'serif'
+        }}>← Back to Home</button>
+      </div>
     </div>
   )
 }
