@@ -42,12 +42,14 @@ button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.8em 1.4em;
-  font-size: 1em;
+  font-size: 1.25em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #b47af5;
+  background-color: #ecc6ed;
+  color: white;
   cursor: pointer;
   transition: border-color 0.25s;
+  font-weight: bold;
 }
 button:hover {
   border-color: #9c6bf5;

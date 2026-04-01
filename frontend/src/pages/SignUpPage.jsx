@@ -18,7 +18,7 @@ export function SignUpPage({headerText, onSubmit}) {
             transform: "translate(-50%, -50%)",
         }}>
         <div>
-            <h1>{headerText}</h1>
+            <h1 style = {{fontStyle: "italic"}}>{headerText}</h1>
             <form onSubmit={handleSubmit}>
                 <label>Name:
                     <input type = "name" value = {name} onChange = {e => setName(e.target.value)} />
@@ -32,7 +32,7 @@ export function SignUpPage({headerText, onSubmit}) {
                     <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
                 </label>
                 <br />
-                <button type="submit">Sign Up</button>
+                <button type="submit" style = {{ backgroundColor: "#b47af5"}}>Sign Up</button>
             </form>
         </div>
         </div>
