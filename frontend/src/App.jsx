@@ -69,6 +69,7 @@ function App() {
       <div className="auth-actions">
         <button onClick={handleLoginClick}>Log In</button>
         <button onClick={handleSignUpClick}>Sign Up</button>
+        <button>About Us</button>
       </div>
       <Header />
     </div>
