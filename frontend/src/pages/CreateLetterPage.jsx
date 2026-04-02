@@ -1,18 +1,30 @@
 
 import { useState } from 'react'
+import { supabase } from '../lib/supabaseClient'
 
 const EMOJIS = ['🌸', '💌', '🕊️', '✨', '💪', '🌿', '🤍', '🌙', '🦋', '🌺', '💛', '🫶']
 
-export function CreateLetterPage({ onSubmit, setPage }) {
+export function CreateLetterPage({ setPage, user }) {
   const [letterContent, setLetterContent] = useState('')
   const [subject, setSubject] = useState('')
   const [selectedEmoji, setSelectedEmoji] = useState('')
+  const [loading, setLoading] = useState(false)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (!letterContent.trim()) return alert('Please write something before publishing.')
+    setLoading(true)
+    const { error } = await supabase.from('Letters').insert({
+      title: subject,
+      textBODY: letterContent,
+      tags: selectedEmoji,
+      isPublic: true,
+      anonymousYoN: true,
+      userID: user.id,
+    })
+    setLoading(false)
+    if (error) return alert('Failed to publish: ' + error.message)
     alert('Letter published! Thank you for sharing your story.')
-    if (onSubmit) onSubmit({ content: letterContent, subject, emoji: selectedEmoji })
     setPage('home')
   }
 
@@ -108,8 +120,8 @@ export function CreateLetterPage({ onSubmit, setPage }) {
               flex: 1, padding: '0.85rem', borderRadius: '10px',
               border: 'none', background: '#7c3f6e',
               color: 'white', cursor: 'pointer', fontSize: '1rem', fontFamily: 'serif'
-            }}>
-              Publish Letter
+            }} disabled={loading}>
+              {loading ? 'Publishing...' : 'Publish Letter'}
             </button>
             <button type="button" onClick={() => setPage('home')} style={{
               padding: '0.85rem 1.5rem', borderRadius: '10px',
