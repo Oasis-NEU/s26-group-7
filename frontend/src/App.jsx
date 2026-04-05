@@ -6,6 +6,7 @@ import { SignUpPage } from './pages/SignUpPage'
 import Home from './Home'
 import { CreateLetterPage } from './pages/CreateLetterPage'
 import { MyLetters } from './pages/MyLetters'
+import { CategoryPage } from './pages/CategoryPage'
 import { signIn, signUp, signOut, getSession } from './lib/authServices'
 import { supabase } from './lib/supabaseClient'
 
@@ -14,6 +15,7 @@ function App() {
   const [showLoginPage, setShowLoginPage] = useState(false)
   const [showSignUpPage, setShowSignUpPage] = useState(false)
   const [page, setPage] = useState(null)
+  const [selectedCategory, setSelectedCategory] = useState(null)
 
   useEffect(() => {
     getSession().then(session => {
@@ -57,7 +59,11 @@ function App() {
   }
 
   if (page === 'home') {
-    return <Home setPage={setPage} onSignOut={handleSignOut} user={user} />
+    return <Home setPage={setPage} onSignOut={handleSignOut} user={user} setSelectedCategory={setSelectedCategory} />
+  }
+
+  if (page === 'category') {
+    return <CategoryPage category={selectedCategory} setPage={setPage} />
   }
 
   if (page === 'write') {
@@ -71,9 +77,9 @@ function App() {
   return (
     <div className="app-shell">
       <div className="auth-actions">
-        <button onClick={handleLoginClick}>Log In</button>
-        <button onClick={handleSignUpClick}>Sign Up</button>
-        <button>About Us</button>
+        <button onClick={handleLoginClick} style={{ backgroundColor: '#b39ddb', color: 'white', border: 'none', padding: '0.5rem 1.3rem', borderRadius: '6px', cursor: 'pointer', fontSize: '0.9rem' }}>Log In</button>
+        <button onClick={handleSignUpClick} style={{ backgroundColor: '#b39ddb', color: 'white', border: 'none', padding: '0.5rem 1.3rem', borderRadius: '6px', cursor: 'pointer', fontSize: '0.9rem' }}>Sign Up</button>
+        <button style={{ backgroundColor: '#b39ddb', color: 'white', border: 'none', padding: '0.5rem 1.3rem', borderRadius: '6px', cursor: 'pointer', fontSize: '0.9rem' }}>About Us</button>
       </div>
       <Header />
     </div>
