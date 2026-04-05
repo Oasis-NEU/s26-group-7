@@ -105,7 +105,6 @@ if (page === 'about') {
           <button onClick={handleLoginClick} style={{ background: 'none', border: 'none', color: '#7c3f6e', fontSize: '0.95rem', cursor: 'pointer', fontFamily: 'serif' }}>Log In</button>
           <button onClick={handleSignUpClick} style={{ background: 'none', border: 'none', color: '#7c3f6e', fontSize: '0.95rem', cursor: 'pointer', fontFamily: 'serif' }}>Sign Up</button>
           <button onClick={() => setPage('about')} style={{ background: 'none', border: 'none', color: '#7c3f6e', fontSize: '0.95rem', cursor: 'pointer', fontFamily: 'serif' }}>About Us</button>
-          <button style={{ background: 'none', border: 'none', color: '#7c3f6e', fontSize: '0.95rem', cursor: 'pointer', fontFamily: 'serif' }}>About Us</button>
         </div>
       </div>
 

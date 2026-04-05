@@ -55,6 +55,8 @@ export function LoginPage({ headerText, onSubmit }) {
                                 style={{ width: '70%', padding: '0.5rem 0.8rem', borderRadius: '10px', border: '1.5px solid #f0dde8', fontSize: '0.85rem', fontFamily: 'serif', color: '#3d1f35', background: '#fdf6f0', outline: 'none' }}
                             />
                         </div>
+                    
+                    
                         <div style={{ marginBottom: '1.5rem' }}>
                             <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 'bold', color: '#a06080', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.4rem' }}>
                                 Password
