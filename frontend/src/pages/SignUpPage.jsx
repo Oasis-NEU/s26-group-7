@@ -1,5 +1,7 @@
+
 import React from 'react'
 import { useState } from 'react'
+import letter from '../assets/LetterClipart.png'
 
 export function SignUpPage({ headerText, onSubmit }) {
     const [email, setEmail] = useState('')
@@ -22,37 +24,74 @@ export function SignUpPage({ headerText, onSubmit }) {
         }
     }
 
+    const inputStyle = {
+        width: '60%', padding: '0.5rem 0.8rem', borderRadius: '10px',
+        border: '1.5px solid #f0dde8', fontSize: '0.85rem',
+        fontFamily: 'serif', color: '#3d1f35', background: '#fdf6f0', outline: 'none'
+    }
+
+    const labelStyle = {
+        display: 'block', fontSize: '0.8rem', fontWeight: 'bold',
+        color: '#a06080', textTransform: 'uppercase',
+        letterSpacing: '0.05em', marginBottom: '0.4rem', textAlign: 'left'
+    }
+
     return (
         <div style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
+            minHeight: '100vh', width: '100vw',
+            background: 'linear-gradient(135deg, #f9e4f0, #ede4f9)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontFamily: 'serif'
         }}>
-            <div>
-                <h1 style={{ fontStyle: "italic" }}>{headerText}</h1>
-                <form onSubmit={handleSubmit}>
-                    <label>Name:
-                        <input type="text" value={name} onChange={e => setName(e.target.value)} required />
-                    </label>
-                    <br />
-                    <label>Username:
-                        <input type="text" value={username} onChange={e => setUsername(e.target.value)} required />
-                    </label>
-                    <br />
-                    <label>Email:
-                        <input type="email" value={email} onChange={e => setEmail(e.target.value)} required />
-                    </label>
-                    <br />
-                    <label>Password:
-                        <input type="password" value={password} onChange={e => setPassword(e.target.value)} required />
-                    </label>
-                    <br />
-                    {error && <p style={{ color: 'red', fontSize: '0.85rem' }}>{error}</p>}
-                    <button type="submit" style={{ backgroundColor: "#b47af5" }} disabled={loading}>
-                        {loading ? 'Creating account...' : 'Sign Up'}
-                    </button>
-                </form>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '3rem' }}>
+
+                {/* Left letter image */}
+                <img src={letter} style={{ width: '200px', height: 'auto', opacity: 0.9 }} alt="Letter Clipart" />
+
+                {/* Form card */}
+                <div style={{
+                    background: 'white', borderRadius: '20px',
+                    padding: '3rem 3.5rem', width: '420px',
+                    boxShadow: '0 8px 32px rgba(180,100,140,0.12)',
+                    border: '1px solid #f0dde8'
+                }}>
+                    <h1 style={{ fontStyle: 'italic', color: '#3d1f35', marginBottom: '2rem', fontSize: '1.8rem', textAlign: 'center' }}>
+                        {headerText}
+                    </h1>
+                    <form onSubmit={handleSubmit} style={{ textAlign: 'center' }}>
+                        <div style={{ marginBottom: '1rem' }}>
+                            <label style={labelStyle}>Name</label>
+                            <input type="text" value={name} onChange={e => setName(e.target.value)} required style={inputStyle} />
+                        </div>
+                        <div style={{ marginBottom: '1rem' }}>
+                            <label style={labelStyle}>Username</label>
+                            <input type="text" value={username} onChange={e => setUsername(e.target.value)} required style={inputStyle} />
+                        </div>
+                        <div style={{ marginBottom: '1rem' }}>
+                            <label style={labelStyle}>Email</label>
+                            <input type="email" value={email} onChange={e => setEmail(e.target.value)} required style={inputStyle} />
+                        </div>
+                        <div style={{ marginBottom: '1.5rem' }}>
+                            <label style={labelStyle}>Password</label>
+                            <input type="password" value={password} onChange={e => setPassword(e.target.value)} required style={inputStyle} />
+                        </div>
+                        {error && <p style={{ color: 'red', fontSize: '0.85rem', marginBottom: '1rem' }}>{error}</p>}
+                        <div style={{ display: 'inline', justifyContent: 'center' }}>
+                        <button type="submit" disabled={loading} style={{
+                            width: '10vw', padding: '0.7rem', borderRadius: '50px',
+                            border: 'none', background: '#7c3f6e',
+                            color: 'white', cursor: 'pointer', fontSize: '0.95rem',
+                            fontFamily: 'serif', display: 'flex', justifyContent: 'center'
+                        }}>
+                            {loading ? 'Creating account...' : 'Sign Up'}
+                        </button>
+                        </div>
+                    </form>
+                </div>
+
+                {/* Right letter image */}
+                <img src={letter} style={{ width: '200px', height: 'auto', opacity: 0.9 }} alt="Letter Clipart" />
+
             </div>
         </div>
     )
