@@ -1,24 +1,13 @@
+import person1 from '../assets/agrima.jpg'
+import person2 from '../assets/tanvi.jpg'
+import person3 from '../assets/mihira.jpg'
+import person4 from '../assets/camryn.jpg'
+
 const TEAM = [
-  {
-    name: "Name Here",
-    role: "Co-Founder",
-    bio: "Add a description",
-  },
-  {
-    name: "Name Here",
-    role: "Co-Founder",
-    bio: "Add a description",
-  },
-  {
-    name: "Name Here",
-    role: "Co-Founder",
-    bio: "Add a description",
-  },
-  {
-    name: "Name Here",
-    role: "Co-Founder",
-    bio: "Add a description",
-  },
+  { name: "Agrima", role: "Co-Founder", bio: "Add a description", photo: person1 },
+  { name: "Tanvi", role: "Co-Founder", bio: "Add a description", photo: person2 },
+  { name: "Mihira", role: "Co-Founder", bio: "Add a description", photo: person3 },
+  { name: "Camryn", role: "Co-Founder", bio: "Add a description", photo: person4 },
 ]
 
 export default function AboutUs({ setPage }) {
@@ -29,15 +18,12 @@ export default function AboutUs({ setPage }) {
       fontFamily: 'serif'
     }}>
 
-      
+      {/* NAVBAR */}
       <div style={{
         display: 'flex', justifyContent: 'space-between', alignItems: 'center',
         padding: '1.2rem 3rem', background: 'white', borderBottom: '1px solid #f0dde8'
       }}>
-        <div
-          onClick={() => setPage(null)}
-          style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#7c3f6e', fontStyle: 'italic', cursor: 'pointer' }}
-        >
+        <div onClick={() => setPage(null)} style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#7c3f6e', fontStyle: 'italic', cursor: 'pointer' }}>
           Unwritten
         </div>
         <button onClick={() => setPage(null)} style={{
@@ -47,7 +33,7 @@ export default function AboutUs({ setPage }) {
         }}>← Back</button>
       </div>
 
- 
+      {/* CONTENT */}
       <div style={{ maxWidth: '800px', margin: '0 auto', padding: '5rem 2rem' }}>
         <h1 style={{ fontStyle: 'italic', color: '#3d1f35', fontSize: '2.5rem', marginBottom: '0.5rem', textAlign: 'center' }}>
           About Us
@@ -64,17 +50,11 @@ export default function AboutUs({ setPage }) {
               boxShadow: '0 4px 20px rgba(180,100,140,0.1)',
               border: '1px solid #f0dde8'
             }}>
-              
-              <div style={{
-                width: '180px', height: '180px', borderRadius: '50%', flexShrink: 0,
-                background: 'linear-gradient(135deg, #f9e4f0, #c084a0)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontSize: '2.5rem'
-              }}>
-                
-              </div>
-
-              
+              <img src={person.photo} alt={person.name} style={{
+                width: '180px', height: '180px', borderRadius: '50%',
+                objectFit: 'cover', flexShrink: 0,
+                border: '3px solid #f0dde8'
+              }} />
               <div>
                 <h2 style={{ color: '#3d1f35', fontSize: '1.4rem', marginBottom: '0.2rem' }}>{person.name}</h2>
                 <p style={{ color: '#c084a0', fontSize: '0.85rem', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.8rem' }}>{person.role}</p>
