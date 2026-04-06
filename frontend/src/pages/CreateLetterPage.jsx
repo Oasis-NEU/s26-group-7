@@ -68,11 +68,12 @@ export function CreateLetterPage({ setPage, user }) {
   return (
     <div style={{
       minHeight: '100vh',
+      width: '100vw',
       background: 'linear-gradient(135deg, #f9e4f0, #ede4f9)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '2rem',
+      padding: '2rem 0',
       fontFamily: 'serif'
     }}>
       <div style={{

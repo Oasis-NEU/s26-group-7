@@ -119,10 +119,11 @@ body {
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  justify-content: center;
   position: fixed;
   top: 1.25rem;
-  
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .brand-title {
