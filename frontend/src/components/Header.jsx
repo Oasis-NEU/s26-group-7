@@ -1,7 +1,10 @@
 import React from 'react'
+import logo from './UnwrittenLogo.png'
 
 export function Header() {
     return (
-        <h1 className="brand-title" style = {{fontSize:"4em"}}>Unwritten</h1>
+        <div>
+            <img src = {logo} alt = "Unwritten Logo" />
+        </div>
     )
 }

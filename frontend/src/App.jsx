@@ -1,53 +1,84 @@
-import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
-import {Header} from './components/Header'
-import {LoginPage} from './pages/LoginPage'
-import {SignUpPage} from './pages/SignUpPage'
-
-
+import { Header } from './components/Header'
+import { LoginPage } from './pages/LoginPage'
+import { SignUpPage } from './pages/SignUpPage'
+import Home from './Home'
+import { CreateLetterPage } from './pages/CreateLetterPage'
+import { PublishSuccessPage } from './pages/PublishSuccessPage'
+import { MyLetters } from './pages/MyLetters'
+import { signIn, signUp, signOut, getSession } from './lib/authServices'
+import { supabase } from './lib/supabaseClient'
 
 function App() {
+  const [user, setUser] = useState(null)
   const [showLoginPage, setShowLoginPage] = useState(false)
-  const [loginHeaderText, setLoginHeaderText] = useState('Login')
   const [showSignUpPage, setShowSignUpPage] = useState(false)
-  const [signUpHeaderText, setSignUpHeaderText] = useState('Sign Up')
+  const [page, setPage] = useState(null)
 
-  const handleLoginClick = () => {
-    setLoginHeaderText('Welcome Back!')
-    setShowLoginPage(true)
+  useEffect(() => {
+    getSession().then(session => {
+      if (session) setUser(session.user)
+    })
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null)
+    })
+
+    return () => subscription.unsubscribe()
+  }, [])
+
+  const handleLoginClick = () => setShowLoginPage(true)
+
+  const handleLoginSubmit = async ({ email, password }) => {
+    await signIn(email, password)
+    setShowLoginPage(false)
+    setPage('home')
   }
 
-  const handleLoginSubmit = ({ username, password }) => {
-    alert(`Logged in as ${username}`)
-    console.log('Login form data:', { username, password })
-    setShowLoginPage(false)
+  const handleSignUpClick = () => setShowSignUpPage(true)
+
+  const handleSignUpSubmit = async ({ email, username, name, password }) => {
+    await signUp(email, password, username, name)
+    setShowSignUpPage(false)
+    setPage('home')
+  }
+
+  const handleSignOut = async () => {
+    await signOut()
+    setPage(null)
   }
 
   if (showLoginPage) {
-    return <LoginPage headerText={loginHeaderText} onSubmit={handleLoginSubmit} />
-  }
-
-  const handleSignUpClick = () => {
-    setSignUpHeaderText('Thanks for your interest in Unwritten!')
-    setShowSignUpPage(true)
-  }
-
-  const handleSignUpSubmit = ({ username, name, password }) => {
-    alert(`Account created for ${name}`)
-    console.log('Sign up form data:', { username, name, password })
-    setShowSignUpPage(false)
+    return <LoginPage headerText="Welcome Back!" onSubmit={handleLoginSubmit} />
   }
 
   if (showSignUpPage) {
-    return <SignUpPage headerText={signUpHeaderText} onSubmit={handleSignUpSubmit} />
+    return <SignUpPage headerText="Thanks for your interest in Unwritten!" onSubmit={handleSignUpSubmit} />
   }
 
-  return (
+  if (page === 'home') {
+    return <Home setPage={setPage} onSignOut={handleSignOut} user={user} />
+  }
+
+  if (page === 'write') {
+    return <CreateLetterPage setPage={setPage} user={user} />
+  }
+
+  if (page === 'myletters') {
+    return <MyLetters setPage={setPage} user={user} />
+  }
+
+  if (page === 'publishsuccess') {
+    return <PublishSuccessPage setPage={setPage} />
+  }
+
+return (
     <div className="app-shell">
       <div className="auth-actions">
         <button onClick={handleLoginClick}>Log In</button>
         <button onClick={handleSignUpClick}>Sign Up</button>
+        <button>About Us</button>
       </div>
       <Header />
     </div>
