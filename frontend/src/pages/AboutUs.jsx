@@ -1,13 +1,13 @@
 import person1 from '../assets/agrima.jpg'
-import person2 from '../assets/tanvi.jpg'
+import person2 from '../assets/tanvii.jpg'
 import person3 from '../assets/mihira.jpg'
 import person4 from '../assets/camryn.jpg'
 
 const TEAM = [
-  { name: "Agrima", role: "Co-Founder", bio: "Add a description", photo: person1 },
-  { name: "Tanvi", role: "Co-Founder", bio: "Add a description", photo: person2 },
-  { name: "Mihira", role: "Co-Founder", bio: "Add a description", photo: person3 },
-  { name: "Camryn", role: "Co-Founder", bio: "Add a description", photo: person4 },
+  { name: "Agrima Jain", role: "Co-Founder", bio: "Add a description", photo: person1 },
+  { name: "Tanvi Bandikallu", role: "Co-Founder", bio: "Add a description", photo: person2 },
+  { name: "Mihira Chandrakar", role: "Co-Founder", bio: "Add a description", photo: person3 },
+  { name: "Camryn Lang", role: "Co-Founder", bio: "Add a description", photo: person4 },
 ]
 
 export default function AboutUs({ setPage }) {
