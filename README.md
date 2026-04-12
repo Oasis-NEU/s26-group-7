@@ -1,16 +1,14 @@
-# React + Vite
+# Overview
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to Unwritten, the website where women are encouraged to share their voice with the world!
 
-Currently, two official plugins are available:
+This website is a public forum where women all around the world can write anonymous letters to whoever needs to hear them. All you need to get started is to create an account, and then you are free to speak the words that have gone long unspoken. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Letters can be published publicly, to inspire connection between women who are facing the same struggles, or privately, if you need the occasional motivational boost. If you want to view other's letters, we have provided many categories to filter by to make the search process easier. Some of these include "To women starting over", "To my future self", and many more that reflect the struggles that women constantly fo through.
 
-## React Compiler
+We created this website to remind you that you are not alone, support and a loving community is right at your fingertips.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# Contributors
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Front-end Developers: Tanvi Bandikallu and Camryn Lang
+Back-end Developers: Mihira Chandrakar and Agrima Jain 
